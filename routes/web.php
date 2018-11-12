@@ -10,10 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('contact', 'PagesController@getContact');
 
-Route::get('about', 'PagesController@getAbout');
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', 'PagesController@getIndex');
+/* 
+    GET /projects (index)
+    GET /projects/create (create)
+    GET /projects/1 (show)
+    POST /projects (store)
+    GET /projects/1/edit (edit)
+    PATCH /projects/1 (update)
+    DELETE /projects/1 (destroy)
+*/
 
-Route::resource('posts', 'PostController');
+Route::resource('projects', 'ProjectsController');
+// Route::get('/projects', 'ProjectsController@index');
+// Route::get('/projects/create', 'ProjectsController@create');
+// Route::get('/projects/{project}', 'ProjectsController@show');
+// Route::post('/projects', 'ProjectsController@store');
+// Route::get('/projects/{project}/edit', 'ProjectsController@edit');
+// Route::patch('/projects/{project}', 'ProjectsController@update');
+// Route::delete('/projects/{project}', 'ProjectsController@destroy');
+
+
