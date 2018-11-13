@@ -11,27 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
+        ->where('slug', '[\w\d\-\_]+');
 
-/* 
-    GET /projects (index)
-    GET /projects/create (create)
-    GET /projects/1 (show)
-    POST /projects (store)
-    GET /projects/1/edit (edit)
-    PATCH /projects/1 (update)
-    DELETE /projects/1 (destroy)
-*/
+Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
 
-Route::resource('projects', 'ProjectsController');
-// Route::get('/projects', 'ProjectsController@index');
-// Route::get('/projects/create', 'ProjectsController@create');
-// Route::get('/projects/{project}', 'ProjectsController@show');
-// Route::post('/projects', 'ProjectsController@store');
-// Route::get('/projects/{project}/edit', 'ProjectsController@edit');
-// Route::patch('/projects/{project}', 'ProjectsController@update');
-// Route::delete('/projects/{project}', 'ProjectsController@destroy');
+Route::get('contact', 'PagesController@getContact');
 
+Route::get('about', 'PagesController@getAbout');
 
+Route::get('/', 'PagesController@getIndex');
+
+Route::resource('posts', 'PostController');
+
+Auth::routes();
