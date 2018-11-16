@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="jumbotron">
-                <h1 class="display-4">Hello! Welcome to My Blog!</h1>
-                <p class="lead">Thank you for visiting. This is my blog built with Laravel.</p>
+                <h1 class="display-4">Hello! Welcome to The Food Blog!</h1>
+                <p class="lead">Thank you for visiting. This food blog is all about the best recipes!</p>
                 <a class="btn btn-primary btn-lg" href="/posts" role="button">See all posts!</a>
             </div>
         </div>
@@ -16,6 +16,8 @@
 
             @foreach($posts as $post)
                 <div class="post">
+                <img src="{{ asset('images/' . $post->image) }}" height="400" width="100%" alt="Image not working."/>
+                <hr>
                     <h3>{{ $post->title }}</h3>
                     <p>{{ $post->body }}</p>
                     <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary">Read More</a>
@@ -26,8 +28,12 @@
             @endforeach
         </div>
         <div class="col-md-3 col-md-offset-1">
-            <h2>Sidebar</h2>
-            <p>Lorem Ipsum Lorem IpsumLorem IpsumLorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
+            <h2>Zoeken</h2>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <hr>
+                <button class="form-control btn-spacing-top" type="submit">Search</button>
+            </form>
         </div>
     </div>
     @endsection

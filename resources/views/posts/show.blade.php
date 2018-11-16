@@ -6,14 +6,26 @@
 
 <div class="row">
     <div class="col-md-8">
+        <img src="{{ asset('images/'.$post->image) }}" height="400" width="100%" alt="Image not working." />
+        <hr>
         <h1>{{ $post->title }}</h1>
         <p class="lead">{{ $post->body  }}</p>
+        <hr>
+        <div class="tags">
+            @foreach ($post->tags as $tag)
+                <button>{{ $tag->name }}</button>
+            @endforeach
+        </div>
     </div>
     <div class="col-md-4">
         <div class="well">
             <dl class="dl-horizontal">
                 <dt>Url Slug<dt>
                 <dd><a href="{{ url('blog/'.$post->slug) }}">{{ url('blog/'.$post->slug) }}</a></dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <label>Category</label>
+                <p>{{ $post->category->name }}</p>
             </dl>
             <dl class="dl-horizontal">
                 <label>Created At:</label>
